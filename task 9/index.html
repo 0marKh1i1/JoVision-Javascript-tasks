@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click Me Page</title>
+    <style>
+        button{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50% , -50%);
+            font-size: 13vw;
+            padding: 4vw;
+            border-radius: 3vw;
+        }
+    </style>
+</head>
+<body>
+    <button name="GetIp" value="GetIp" onclick="getIpHandler()">Get ip</button>
+    <script>
+          function getIpHandler(){
+            fetch("https://api.ipify.org")
+                .then(res => {
+                    if (!res.ok) {
+                        throw new Error("Network response was not ok: " + res.statusText);
+                    }
+                    return res.text();
+                })
+                .then(ip => {
+                    console.log("IP -> " + ip);
+                })
+                .catch(err => {
+                    console.error("Fetch error: " , err.message);
+                });
+        }
+    </script>
+</body>
+</html>
