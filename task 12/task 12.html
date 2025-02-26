@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click Me Page</title>
+    <style>
+        body {
+            display: grid;
+            place-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: beige;
+        }
+        form{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 5vw;
+            gap: 2vh;
+            border: #808080 0.25vw solid;
+            border-radius: 4vw;
+            background-color: #afb8c967;
+        }
+        input{
+            font-size: 5vw;
+            padding: 1.5vw;
+            text-align: center;
+            background-color: #33445e;
+            color:aliceblue;
+            border-radius: 2vw;
+            border: #808080 0.25vw solid;
+        }
+
+    </style>
+</head>
+<body>
+    <form onsubmit="FormHandler(event)">
+        <input type="text" name="name" placeholder="name" value="">
+        <input type="number" name="age" placeholder="age" value="">
+        <input type="submit" value="submit">
+    </form>
+    <script>
+        function getDateTime(){
+            const time = new Date();
+            const hours = String(time.getHours()).padStart(2,'0') , minutes = String(time.getMinutes()).padStart(2,'0') , seconds = String(time.getSeconds()).padStart(2,'0'); 
+            const days = String(time.getDate()).padStart(2,'0') , months = String(time.getMonth()+1).padStart(2,'0') , years = String(time.getFullYear()).padStart(4,'0');
+            return (`${hours}:${minutes}:${seconds}   ${days}/${months}/${years}`); 
+        }
+        function person( name , age ){
+            this.name = name;
+            this.age = parseInt(age);
+            this.timestamp = getDateTime();
+        }
+        function FormHandler(e){
+            e.preventDefault();
+            const obj = new person(e.target.name.value , e.target.age.value);
+            popup(obj);
+        }
+        function popup(obj){
+            let name , age , timestamp;
+            ({name , age , timestamp} = obj);
+            alert(`Your name is: ${name}\nYour age is: ${age}\nTimestamp: ${timestamp}`);
+        }
+    </script>
+</body>
+</html>
