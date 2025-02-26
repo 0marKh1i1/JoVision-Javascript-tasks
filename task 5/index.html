@@ -7,63 +7,34 @@
 </head>
 <body>
 <script>
-    function shuffleArray(array) {
-        for (let i = array.length - 1; i > 0; i--) {
-            let j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]];
+    function ClickMeHandler(){
+        let arr = new Array(100);
+        let sum = 0;
+
+        for (let i = 0; i < arr.length; i++) {
+            arr[i] = i+1;
         }
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] % 2 === 0)
+                sum += arr[i];
+        }
+        
+        console.log(sum);
+        return;
     }
-    function ButtonAHandler(){
-        let arr = Array.from({ length: 100 }, (_, i) => i + 1);
-        arr = arr.filter(temp => temp % 3 !== 0);
-        console.log(arr);
-    }
-    function ButtonBHandler(){
-        let arr = Array.from({ length: 100 }, (_, i) => i + 1);
-        arr = arr.concat(Array.from({length:50},(_,i) => i + 101));
-        console.log(arr);
-    }
-    function ButtonCHandler(){
-        let arr = Array.from({ length: 100 }, (_, i) => i + 1);
-        arr= arr.map(num => num + 3);
-        console.log(arr);
-    }
-    function ButtonDHandler(){
-        let arr = Array.from({ length: 100 }, (_, i) => i + 1);
-        console.log(arr.slice(20, 41));
-    }
-    function ButtonEHandler(){
-        let arr = Array.from({ length: 100 }, (_, i) => i + 1);
-        shuffleArray(arr);
-        console.log(arr);
-        arr.sort((a,b) => b - a);
-        console.log(arr);
-    }
-    
 </script>
 <style>
-    body{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-    }
-    .Click-me-button{
-        font-size: 2vw;
-        padding: 4vw;
-        margin: 1vw;
-        border-radius: 4vw;
-    }
-    .red{background-color: #ff6666;}
-    .orange{background-color: #ffae4a;}
-    .yellow{background-color: #fff766;}
-    .green{background-color: #a1ffa5;}
-    .blue{background-color: #b6ddf3;}
+.Click-me-button{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 10rem;
+    padding: 4rem;
+    border-radius: 4rem;
+    background-color: #b6ddf3;
+}
 </style>
-    <button class="Click-me-button red" onclick="ButtonAHandler()">Button A</button>
-    <button class="Click-me-button orange" onclick="ButtonBHandler()">Button B</button>
-    <button class="Click-me-button yellow" onclick="ButtonCHandler()">Button C</button>
-    <button class="Click-me-button green" onclick="ButtonDHandler()">Button D</button>
-    <button class="Click-me-button blue" onclick="ButtonEHandler()">Button E</button>
+    <button class="Click-me-button" onclick="ClickMeHandler()">Click Me</button>
 </body>
 </html>
