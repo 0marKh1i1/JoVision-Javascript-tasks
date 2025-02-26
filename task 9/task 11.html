@@ -20,7 +20,7 @@
     <button id="IDButton" onclick="getIpHandler()">Get ip</button>
     <script>
           function getIpHandler(){
-            fetch("https://api.ipify.org/")
+            fetch("https://api.dsaipify.org/")
                 .then(res => {
                     if (!res.ok) {
                         throw new Error("Network response was not ok: " + res.statusText);
