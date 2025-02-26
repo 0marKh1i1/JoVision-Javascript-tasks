@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click Me Page</title>
+    <style>
+        .time-div{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50% , -50%);
+            font-size: 13vw;
+        }
+    </style>
+</head>
+<body>
+    <div class="time-div" id="timeDiv">
+        HH:MM:SS
+    </div>
+    <script>
+        function TimeUpdater(){
+            const time = new Date();
+            const hours = String(time.getHours()).padStart(2,'0') , minutes = String(time.getMinutes()).padStart(2,'0') , seconds = String(time.getSeconds()).padStart(2,'0'); 
+            const timeDiv = document.getElementById('timeDiv');
+            timeDiv.textContent = `${hours}:${minutes}:${seconds}`;
+        }
+        setInterval(TimeUpdater , 1000);
+        TimeUpdater();
+
+    </script>
+</body>
+</html>
