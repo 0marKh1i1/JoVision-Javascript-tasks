@@ -5,19 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Click Me Page</title>
     <style>
-        button{
+        #IDButton{
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50% , -50%);
-            font-size: 13vw;
+            font-size: 10vw;
             padding: 4vw;
             border-radius: 3vw;
         }
     </style>
 </head>
 <body>
-    <button name="GetIp" value="GetIp" onclick="getIpHandler()">Get ip</button>
+    <button id="IDButton" onclick="getIpHandler()">Get ip</button>
     <script>
           function getIpHandler(){
             fetch("https://api.ipify.org")
@@ -28,6 +28,8 @@
                     return res.text();
                 })
                 .then(ip => {
+                    const idButton = document.getElementById("IDButton");
+                    idButton.textContent = ip;                    
                     console.log("IP -> " + ip);
                 })
                 .catch(err => {
